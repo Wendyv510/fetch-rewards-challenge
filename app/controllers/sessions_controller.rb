@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id 
             redirect_to show_path
         else 
-            render :login 
+            redirect_to :login 
         end 
     end 
 
