@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
   
   root 'sessions#welcome' 
+
   get '/signup' => 'users#new' 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'  
-  resources :users
-  get '/users' => 'users#index' 
+  delete 'logout' => 'sessions#destroy'
 
+  resources :users
   resources :transactions
+ 
+  resources :users, only: [:index, :show] do 
+    resources :transactions, only: [:new, :create, :show, :index] 
+
+  
   get '/all_payers_points' => 'transactions#index' 
   get '/add_transaction' => 'transactions#create' 
   get '/spend_points' => 'transactions#index' 
