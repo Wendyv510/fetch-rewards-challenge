@@ -1,0 +1,13 @@
+<h1> Add Transaction </h1> 
+
+<%= form_for(@transaction) do |f|   %> 
+    <%= f.label :payer  %> 
+    <%= f.text_field :payer, :required => true %>
+
+    <%= f.label :points %> 
+    <%= f.email_field :points, :required => true %>
+
+
+    <%= f.submit "Add Transaction" %> 
+    
+    <% end %> 
